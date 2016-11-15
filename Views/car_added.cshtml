@@ -1,4 +1,7 @@
-<h1>You've added a new car!</h1>
-<p>@Model.GetDescription()</p>
-<p><a href='/'>Add another car</a></p>
-<p><a href='/view_all_cars'>View current cars</a></p>
+<h1>Car Dealership Inventory</h1>
+<p>Your car has been successfully added to our dealership!</p>
+<p>@Model.GetMakeModel()</p>
+<p>Year: @Model.GetPrice()</p>
+<p>Price: @Model.GetMiles()</p>
+<p><a href="/add_new_car">Add Another Car</a></p>
+<p><a href="/car_list">View All Cars</a></p>

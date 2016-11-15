@@ -1,6 +1,17 @@
-<h1>Car List</h1>
-<form action='/car_added' method='post'>
-  <label for='new-car'>Add a new car</label>
-  <input id='new-car' name='new-car' type='text'>
-  <button type='submit'>Submit</button>
+<h1>Car Dealership Inventory</h1>
+<p>Add cars to the list in the form below.</p>
+<form action="/car_added" method="post">
+  <div class="form-group">
+    <label for="new-make-model">Make & Model</label>
+    <input type="text" name="new-make-model" id="new-make-model" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="new-price">Price</label>
+    <input type="text" name="new-price" id="new-price" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="new-miles">Mileage</label>
+    <input type="text" name="new-miles" id="new-miles" class="form-control">
+  </div>
+  <button type="submit">Submit</button>
 </form>

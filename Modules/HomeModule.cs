@@ -1,26 +1,32 @@
 using Nancy;
-using ToDoList.Objects;
+using Cars.Objects;
 using System.Collections.Generic;
 
-namespace CarDealership
+namespace Cars
 {
   public class HomeModule : NancyModule
   {
     public HomeModule()
     {
-      Get["/"] = _ => View["add_new_car.cshtml"];
-      Get["/view_all_cars"] = _ => {
-        List<string> allCars = Car.GetAll();
-        return View["view_all_cars.cshtml", allCars];
+      Get["/add_new_car.cshtml"] = _ => {
+        return View["add_new_car.cshtml"];
       };
-      Post["/car_added"] = _ => {
-        Car newCar = new Car (Request.Form["new-car"]);
-        newCar.Save();
-        return View["car_added.cshtml", newCar];
+      Get["/car_added.cshtml"] = _ => {
+        string inputMake = Request.Form["new-make-model"];
+        int inputPrice = int.Parse(Request.Form["new-price"]);
+        int inputMiles = int.Parse(Request.Form["new-miles"]);
+
+        Car inputCar = new Car(inputMake, inputPrice, inputMiles);
+        inputCar.AddToList();
+
+        return View["car_added.cshtml", inputCar];
       };
-      Post["/tasks_cleared"] = _ => {
-        Task.ClearAll();
-        return View["tasks_cleared.cshtml"];
+      Get["/inventory"] = _ => {
+        return View["inventory.cshtml", Car.ViewList()];
+      };
+      Post["/clear_list"] = _ => {
+        Car.ClearList();
+        return View["/cleared.list.cshtml"];
       };
     }
   }

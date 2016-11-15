@@ -1,65 +1,56 @@
-using System;
 using System.Collections.Generic;
 
-class Car
+namespace Cars.Objects
 {
-  private string _makeModel;
-  private int _price;
-  private int _miles;
-
-  public bool WorthBuying(int maxPrice, int maxMiles)
+  public class Car
   {
-  return (Price < maxPrice && Miles < maxMiles);
-  }
-}
+    private string _makeModel;
+    private int _price;
+    private int _miles;
+    private static List<string> _inventory = new List<Car>{};
 
-public class Program
-{
-  public static void Main()
-  {
-    Car porsche = new Car();
-    porsche.MakeModel = "2014 Porsche 911";
-    porsche.Price = 114991;
-    porsche.Miles = 7864;
-
-    Car ford = new Car();
-    ford.MakeModel = "2011 Ford F450";
-    ford.Price = 55995;
-    ford.Miles = 14241;
-
-    Car lexus = new Car();
-    lexus.MakeModel = "2013 Lexus RX 350";
-    lexus.Price = 44700;
-    lexus.Miles = 20000;
-
-    Car mercedes = new Car();
-    mercedes.MakeModel = "Mercedes Benz CLS550";
-    mercedes.Price = 39900;
-    mercedes.Miles = 37979;
-
-    List<Car> Cars = new List<Car>() { porsche, ford, lexus, mercedes };
-
-    Console.WriteLine("Enter maximum price: ");
-    string stringMaxPrice = Console.ReadLine();
-    int maxPrice = int.Parse(stringMaxPrice);
-
-    Console.WriteLine("Enter maximum miles: ");
-    string stringMaxMiles = Console.ReadLine();
-    int maxMiles = int.Parse(stringMaxMiles);
-
-    List<Car> CarsMatchingSearch = new List<Car>(0);
-
-    foreach (Car automobile in Cars)
+    public Car(string MakeModel, int Price, int Miles)
     {
-      if (automobile.WorthBuying(maxPrice, maxMiles))
-      {
-        CarsMatchingSearch.Add(automobile);
-      }
+      _makeModel = MakeModel;
+      _price = Price;
+      _miles = Miles;
     }
 
-    foreach(Car automobile in CarsMatchingSearch)
+    public void SetMakeModel(string newMakeModel)
     {
-      Console.WriteLine(automobile.MakeModel);
+      _makeModel = MakeModel;
+    }
+    public string GetMakeModel()
+    {
+      return _makeModel;
+    }
+    public void SetPrice(int newPrice)
+    {
+      _price = newPrice;
+    }
+    public int GetPrice()
+    {
+      return _price;
+    }
+    public void SetMiles(int newMiles)
+    {
+      _miles = newMiles;
+    }
+    public int GetMiles()
+    {
+      return _miles;
+    }
+    public void AddToInventory()
+    {
+      _inventory.Add(this);
+    }
+    public static List<Car> ViewInventory()
+    {
+      return _inventory;
+    }
+    public static void ClearInventory()
+    {
+      _inventory.Clear();
     }
   }
 }

@@ -1,0 +1,16 @@
+<h1>Car Dealership Inventory</h1>
+<br>
+<h3>Available Cars</h3>
+<p>Here the cars we currently have in stock:</p>
+@foreach(var carInstance in Model)
+{
+  <br>
+  <p><strong>@carInstance.GetMakeModel()</strong></p>
+  <p>Year: @carInstance.GetPrice()</p>
+  <p>Price: @carInstance.GetMiles()</p>
+}
+
+<p><a href="/add_new_car">Add Another Car</a></p>
+<form action="/clear_list" method="post">
+  <button type="submit">Clear Inventory</button>
+</form>
