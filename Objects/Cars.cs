@@ -7,18 +7,18 @@ namespace Cars.Objects
     private string _makeModel;
     private int _price;
     private int _miles;
-    private static List<string> _inventory = new List<Car>{};
+    private static List<Car> _inventory = new List<Car>{};
 
-    public Car(string MakeModel, int Price, int Miles)
+    public Car(string makeModel, int price, int miles)
     {
-      _makeModel = MakeModel;
-      _price = Price;
-      _miles = Miles;
+      _makeModel = makeModel;
+      _price = price;
+      _miles = miles;
     }
 
     public void SetMakeModel(string newMakeModel)
     {
-      _makeModel = MakeModel;
+      _makeModel = newMakeModel;
     }
     public string GetMakeModel()
     {

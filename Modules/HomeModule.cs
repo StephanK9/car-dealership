@@ -8,25 +8,25 @@ namespace Cars
   {
     public HomeModule()
     {
-      Get["/add_new_car.cshtml"] = _ => {
+      Get["/"] = _ => {
         return View["add_new_car.cshtml"];
       };
-      Get["/car_added.cshtml"] = _ => {
+      Post["/car_added"] = _ => {
         string inputMake = Request.Form["new-make-model"];
         int inputPrice = int.Parse(Request.Form["new-price"]);
         int inputMiles = int.Parse(Request.Form["new-miles"]);
 
         Car inputCar = new Car(inputMake, inputPrice, inputMiles);
-        inputCar.AddToList();
+        inputCar.AddToInventory();
 
         return View["car_added.cshtml", inputCar];
       };
       Get["/inventory"] = _ => {
-        return View["inventory.cshtml", Car.ViewList()];
+        return View["inventory.cshtml", Car.ViewInventory()];
       };
-      Post["/clear_list"] = _ => {
-        Car.ClearList();
-        return View["/cleared.list.cshtml"];
+      Post["/cleared_list"] = _ => {
+        Car.ClearInventory();
+        return View["inventory.cshtml"];
       };
     }
   }
