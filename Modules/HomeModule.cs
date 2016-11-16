@@ -17,7 +17,7 @@ namespace Cars
         int inputMiles = int.Parse(Request.Form["new-miles"]);
 
         Car inputCar = new Car(inputMake, inputPrice, inputMiles);
-        inputCar.AddToInventory();
+
 
         return View["car_added.cshtml", inputCar];
       };
@@ -26,7 +26,7 @@ namespace Cars
       };
       Post["/cleared_list"] = _ => {
         Car.ClearInventory();
-        return View["inventory.cshtml"];
+        return View["cleared_list"];
       };
     }
   }

@@ -14,6 +14,7 @@ namespace Cars.Objects
       _makeModel = makeModel;
       _price = price;
       _miles = miles;
+      _inventory.Add(this);
     }
 
     public void SetMakeModel(string newMakeModel)
@@ -39,10 +40,6 @@ namespace Cars.Objects
     public int GetMiles()
     {
       return _miles;
-    }
-    public void AddToInventory()
-    {
-      _inventory.Add(this);
     }
     public static List<Car> ViewInventory()
     {
